@@ -16,10 +16,11 @@ const SingleColor = ({index,color}) => {
         }
     }
   return (
-    <article 
-    className={index>10 ? "color color-ligth":"color"} 
-    style={{ background: `#${hex}` }}
-    onClick={saveToClipboard}>
+    <article
+      className={index > 10 ? 'color color-light color-value' : 'color'}
+      style={{ background: `#${hex}` }}
+      onClick={saveToClipboard}
+    >
       <p className="percent-value">{weight}%</p>
       <p className="color-value">#{hex}</p>
     </article>
