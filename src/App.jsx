@@ -9,14 +9,23 @@ import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
 
   const [colors, setColors] = useState(new Values('#f15025').all(10))
-  console.log(colors);
-  toast.success('success!');
-  
+  const addColor = (color)=>{
+    try {
+      const newColors = new Values(color).all(10);
+      setColors(newColors);
+      
+    } catch (error) {
+      
+      toast.error(error.message);
+    }
+  };
+
+
   return (
     <main>
       <ToastContainer position="top-center"/>
       <div className="container">
-        <Form/>
+        <Form addColor = {addColor}/>
       </div>
       <div className="colors">
         <ColorList colors={colors}/>
