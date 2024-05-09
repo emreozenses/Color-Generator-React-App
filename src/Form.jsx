@@ -1,20 +1,24 @@
 import React, { useState } from 'react'
 
 const Form = () => {
-    const [color, setColor] = useState('#0000');
 
-    const handleColorChange = (e)=>{
+
+    const [color, setColor] = useState('')
+
+    const handleColorChange = (e) => {
+      setColor(e.target.value)
+    }
+    const handleSubmit = (e)=>{
+        e.preventDefault();
         setColor(e.target.value);
     }
 
   return (
     <section className='container'>
-      <form className="color-form">
-        <label htmlFor="color">Color Generator</label>
+      <h4>color generator</h4>
+      <form className="color-form" onSubmit={handleSubmit}>
         <input
           type="color"
-          name="color"
-          id="color"
           value={color}
           onChange={handleColorChange}
         />
@@ -24,8 +28,9 @@ const Form = () => {
           id="text"
           value={color}
           onChange={handleColorChange}
+          placeholder='#f15025'
         />
-        <button className='btn'>Submit</button>
+        <button className='btn' type='submit' style={{background:color}}>Submit</button>
       </form>
     </section>
   )
